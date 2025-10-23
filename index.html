@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>简单的 HTML 页面</title>
+    <style>
+        :root { --bg:#f7f9fc; --card:#fff; --accent:#2b8aef; --text:#17262a; }
+        body { margin:0; font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial; background:var(--bg); color:var(--text); }
+        .container { max-width:900px; margin:40px auto; padding:24px; }
+        header { display:flex; align-items:center; gap:12px; }
+        h1 { margin:0; font-size:1.6rem; }
+        .card { background:var(--card); border-radius:10px; padding:18px; box-shadow:0 6px 20px rgba(12,20,30,0.06); }
+        button { background:var(--accent); color:#fff; border:0; padding:10px 14px; border-radius:6px; cursor:pointer; }
+        footer { margin-top:18px; font-size:0.9rem; color:#586069; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" aria-hidden>
+                <rect width="24" height="24" rx="6" fill="#2b8aef"></rect>
+                <path d="M7 12h10" stroke="#fff" stroke-width="1.5" stroke-linecap="round"></path>
+            </svg>
+            <h1>简单的 HTML 页面</h1>
+        </header>
+
+        <main class="card" style="margin-top:16px;">
+            <p>这是一个示例页面，包含标题、一些说明、以及一个交互按钮。</p>
+            <p>
+                你可以把这个文件保存为 <code>index.html</code>，然后在浏览器中打开查看效果。
+            </p>
+
+            <div style="margin-top:12px;">
+                <button id="helloBtn">点击我</button>
+                <button id="toggleBtn" style="margin-left:8px; background:#e6eefc; color:var(--accent)">切换主题</button>
+            </div>
+        </main>
+
+        <footer>
+            <p>示例页面 · 无依赖 · 仅用于演示</p>
+        </footer>
+    </div>
+
+    <script>
+        const helloBtn = document.getElementById('helloBtn');
+        helloBtn.addEventListener('click', () => {
+            alert('你好！这是一个简单的 HTML 示例。');
+        });
+
+        const toggleBtn = document.getElementById('toggleBtn');
+        toggleBtn.addEventListener('click', () => {
+            const root = document.documentElement;
+            const isDark = root.style.getPropertyValue('--bg') === '#0b1220';
+            if (!isDark) {
+                root.style.setProperty('--bg','#0b1220');
+                root.style.setProperty('--card','#0f1720');
+                root.style.setProperty('--text','#e6eef6');
+                root.style.setProperty('--accent','#7cc0ff');
+            } else {
+                root.style.setProperty('--bg','#f7f9fc');
+                root.style.setProperty('--card','#fff');
+                root.style.setProperty('--text','#17262a');
+                root.style.setProperty('--accent','#2b8aef');
+            }
+        });
+    </script>
+</body>
+</html></svg>
